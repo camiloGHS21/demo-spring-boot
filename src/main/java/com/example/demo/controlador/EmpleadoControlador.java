@@ -1,6 +1,7 @@
 package com.example.demo.controlador;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,7 @@ public class EmpleadoControlador {
  
 @GetMapping("/guardar")
 public Empleado guardarEmpleado( ){
-	Empleado empleado = new Empleado(1234L,"grajales","camiloghs1@gmail.com","camilo");
+	Empleado empleado = new Empleado(1235L,"grajales","camiloghs1@gmail.com","camilo");
     return repositorio.save(empleado);
 }
 @GetMapping("/buscar")
@@ -94,6 +95,26 @@ public String actualizarPorEmail() {
     repositorio.save(empleado);
     return "empleado actualizado por el email";
    
+}
+
+@GetMapping("/total_de_nominas_de_emplados")
+public Optional<Object> total_de_nominas_de_emplados() {
+ return	repositorio.calcularTotalNominaPorEmpleado();
+}
+
+@GetMapping("/total_de_nominas_por_mes")
+public List<Object> total_de_nominas_por_mes() {
+    return repositorio.calcularTotalNominaPorEmpleadoMes();
+}
+
+@GetMapping("/total_de_empleados")
+public Optional<Object> total_de_empleados() {
+    return repositorio.TotalEmpleados();
+}
+
+@GetMapping("/cantidadpagoEmpleado")
+public List<Object> cantidadPagoEmpleado(){
+	return repositorio.cantidadPagoEmpleado();
 }
 
 

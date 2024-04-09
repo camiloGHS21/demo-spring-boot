@@ -27,9 +27,9 @@ public class NominaControlador {
 	 
 	  @GetMapping("/guardar")
 	    public String guardarEmpleado() {
-	        Empleado empleado = empleadoRepository.findById(1234L).orElseThrow(() -> new RuntimeException("Empleado no encontrado"));
+	        Empleado empleado = empleadoRepository.findById(1235L).orElseThrow(() -> new RuntimeException("Empleado no encontrado"));
 	        
-	        Nomina nomina = new Nomina("Marzo", 1500000L, empleado);
+	        Nomina nomina = new Nomina("Junio", 1500000L, empleado);
 	        repositorio.save(nomina);
 	        return "nomina guardada";
 	    }
